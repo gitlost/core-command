@@ -1,5 +1,5 @@
 <?php
-
+// DUMMY edit.
 if ( ! class_exists( 'WP_CLI' ) ) {
 	return;
 }
