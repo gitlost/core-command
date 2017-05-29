@@ -1296,6 +1296,13 @@ EOT;
 				if ( ! preg_match( '/^[0-9]+(\.[0-9]+)?$/', $args[0], $matches ) ) {
 					WP_CLI::error( 'Invalid version.' );
 				}
+				if ( 1 === count( $matches ) ) {
+					if ( $args[0] < 3 ) {
+						WP_CLI::error( 'Versions less than 3.7 are not supported.' );
+					}
+				} elseif ( $args[0] < 3.7 ) {
+					WP_CLI::error( 'Versions less than 3.7 are not supported.' );
+				}
 				$version_match = '/^' . preg_quote( $args[0] ) . '/';
 			}
 		}

@@ -42,7 +42,15 @@ Feature: Find latest version of WordPress available
     Then the return code should be 1
     And STDERR should contain:
       """
-      Error: Failed to match version.
+      Error: Versions less than 3.7 are not supported.
+      """
+    And STDOUT should be empty
+
+    When I try `wp core latest_version 2`
+    Then the return code should be 1
+    And STDERR should contain:
+      """
+      Error: Versions less than 3.7 are not supported.
       """
     And STDOUT should be empty
 
@@ -57,6 +65,14 @@ Feature: Find latest version of WordPress available
 
   Scenario: Specifying an invalid version.
     When I try `wp core latest_version 1.2.3.4`
+    Then the return code should be 1
+    And STDERR should contain:
+      """
+      Error: Invalid version.
+      """
+    And STDOUT should be empty
+
+    When I try `wp core latest_version asdf`
     Then the return code should be 1
     And STDERR should contain:
       """
