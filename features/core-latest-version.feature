@@ -16,7 +16,7 @@ Feature: Find latest version of WordPress available
     When I run `wp core latest_version 4`
     Then STDOUT should be:
       """
-      {WP_VERSION-latest}
+      {WP_VERSION-4-latest}
       """
 
     # Earliest version it works for.
