@@ -346,8 +346,7 @@ Feature: Manage WordPress installation
     And the wp/wp-blog-header.php file should exist
 
     When I run `wp db create`
-	# @broken: This is causing issues on sending email on Travis for some reason so allow non-empty STDERR for the moment.
-    And I try `wp core install --url=wp.dev --title="WP Dev" --admin_user=wpcli --admin_password=wpcli --admin_email=wpcli@example.com`
+    And I run `wp core install --url=wp.dev --title="WP Dev" --admin_user=wpcli --admin_password=wpcli --admin_email=wpcli@example.com`
     Then STDOUT should contain:
       """
       Success: WordPress installed successfully.
